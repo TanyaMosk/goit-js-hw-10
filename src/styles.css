@@ -1,6 +1,49 @@
-.loader{
+body{
+  background-color: azure;
+}
+
+img {
+  display: block;
+  border-radius: 10px;
+  border: 2px solid gray;  
+}
+
+.error {
+  display: none;  
+}
+
+.is-hidden {
   display: none;
 }
-.error{
-  display: none;
+
+.ss-main.breed-select {  
+  width: 260px; 
+  border-radius: 5px;
+  border: 2px solid gray;
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-right: auto;  
+  
 }
+
+.cat-info {  
+  width: 1050px;
+  padding: 20px;
+}
+
+.cat-description {  
+  border: 2px solid gray;
+  border-radius: 10px;
+  background-color: gainsboro;
+  padding: 20px;
+  display: flex;
+}
+
+.cat-text {
+  padding: 10px 20px;
+  border: 2px solid gray;
+  border-radius: 10px;
+  margin-left: 30px;
+  width: 500px;
+}
+
