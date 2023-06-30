@@ -11,11 +11,6 @@ img {
 .error {
   display: none;  
 }
-
-.is-hidden {
-  display: none;
-}
-
 .ss-main.breed-select {  
   width: 260px; 
   border-radius: 5px;
@@ -47,3 +42,44 @@ img {
   width: 500px;
 }
 
+.loader {
+  color: transparent;
+  left:25%;
+  top: 25%;
+  width: 48px;
+  height: 48px;
+  border: 3px solid orange;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  position: absolute;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;  
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid;
+  border-color: #ff3d00 transparent;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.is-hidden {
+  display: none;
+}
