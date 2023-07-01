@@ -1,13 +1,13 @@
 import axios from "axios";
 
 const BASE_URL = 'https://api.thecatapi.com/v1/';
-const QUERY_PARAMETERS = './breeds';
+const QUERY_PARAMETERS = 'breeds';
 const API_KEY =
   'live_kne6mpkXLgm7nUZCS4ggJbVB6nrlBRkssF2XTvE8EvJdlnobGv1bcarHfgDxjrmo';
 
   
 export function fetchBreeds() {
-  return axios.get(`${BASE_URL1}${QUERY_PARAMETERS}`, {
+  return axios.get(`${BASE_URL}${QUERY_PARAMETERS}`, {
     headers: {
       'x-api-key': API_KEY,
     }
