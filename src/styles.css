@@ -1,32 +1,33 @@
-body{
-  background-color: azure;
+body {
+  background-color: whitesmoke;
 }
 
 img {
   display: block;
   border-radius: 10px;
-  border: 2px solid gray;  
+  border: 2px solid gray;
 }
 
 .error {
-  display: none;  
+  display: none;
 }
-.ss-main.breed-select {  
-  width: 260px; 
+
+.ss-main.breed-select {
+  width: 260px;
   border-radius: 5px;
   border: 2px solid gray;
   margin-top: 20px;
   margin-left: 30px;
-  margin-right: auto;  
-  
+  margin-right: auto;
 }
 
-.cat-info {  
+
+.cat-info {
   width: 1050px;
   padding: 20px;
 }
 
-.cat-description {  
+.cat-description {
   border: 2px solid gray;
   border-radius: 10px;
   background-color: gainsboro;
@@ -42,16 +43,22 @@ img {
   width: 500px;
 }
 
+.loader-text {
+  position: absolute;
+  top: 1%;
+  left: 30%;
+  font-weight: 500;
+}
+
 .loader {
   color: transparent;
-  left:25%;
+  left: 25%;
   top: 25%;
   width: 48px;
   height: 48px;
   border: 3px solid orange;
   border-radius: 50%;
   display: inline-block;
-  position: relative;
   position: absolute;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
@@ -60,7 +67,7 @@ img {
 .loader::after {
   content: '';
   box-sizing: border-box;
-  position: absolute;  
+  position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -79,7 +86,6 @@ img {
     transform: rotate(360deg);
   }
 }
-
 .is-hidden {
   display: none;
 }
