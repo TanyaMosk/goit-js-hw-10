@@ -1,5 +1,6 @@
 import './styles.css';
 import { fetchBreeds, fetchCatByBreed } from './cat-api';
+import { createMarkup} from './markupServise';
 import Notiflix from 'notiflix';
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
@@ -20,17 +21,17 @@ refs.textLoader.classList.remove('is-hidden');
 let catsBreedsId = [];
 fetchBreeds()
   .then(data => {
-  //   for (let i = 0; i < data.length; i += 1) {
-  //     const cat = data[i];
-  //   catsBreedsId.push({ text: cat.name, value: cat.id });
-  // }
-  data.forEach(cat => {
+    // console.log(data);
+    //   for (let i = 0; i < data.length; i += 1) {
+    //     const cat = data[i];
+    //   catsBreedsId.push({ text: cat.name, value: cat.id });
+    // }
+    data.forEach(cat => {
       catsBreedsId.push({ text: cat.name, value: cat.id });
     });
     new SlimSelect({
       select: refs.breedSelect,
       data: catsBreedsId,
-      
     });
   })
   .catch(onError);
@@ -47,29 +48,9 @@ function onChooseCatBreed(event) {
       refs.loader.classList.add('is-hidden');
       refs.textLoader.classList.add('is-hidden');
       // console.log(breedId);
-      createMarkup(data);
+      refs.catInfo.innerHTML = createMarkup(data);
     })
     .catch(onError);
-}
-
-function createMarkup(cats) {
-  return cats
-    .map(({ url, breeds }) => {
-      // const { url, breeds } = cat;
-      refs.catInfo.innerHTML = /*html*/ `
-    <div class="cat-description">
-      <img src="${url}" alt="${breeds[0].name}" width="460">
-      <div class="cat-text">
-      <h2>${breeds[0].name}</h2>
-      <h3>Origin</h3>
-      <p>${breeds[0].origin}</p>
-      <h3>Temperament</h3>
-      <p>${breeds[0].temperament}</p>
-      <h3>Description</h3>
-      <p>${breeds[0].description}</p></div>
-    </div> `;
-    })
-    .join('');
 }
 
 function onError() {
