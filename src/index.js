@@ -1,6 +1,6 @@
 import './styles.css';
 import { fetchBreeds, fetchCatByBreed } from './cat-api';
-import { createMarkup} from './markupServise';
+import { createMarkup } from './markupServise';
 import Notiflix from 'notiflix';
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
@@ -18,17 +18,15 @@ refs.breedSelect.addEventListener('change', onChooseCatBreed);
 refs.loader.classList.remove('is-hidden');
 refs.textLoader.classList.remove('is-hidden');
 
-let catsBreedsId = [];
+// Отримуємо список котів з сервера
 fetchBreeds()
-  .then(data => {
-    // console.log(data);
-    //   for (let i = 0; i < data.length; i += 1) {
-    //     const cat = data[i];
-    //   catsBreedsId.push({ text: cat.name, value: cat.id });
-    // }
-    data.forEach(cat => {
-      catsBreedsId.push({ text: cat.name, value: cat.id });
-    });
+  .then(data => {    
+    // створюємо новий масив зі всіма породами котів по id
+    const catsBreedsId = data.map(breed => ({
+      text: breed.name,
+      value: breed.id,
+    }));
+
     new SlimSelect({
       select: refs.breedSelect,
       data: catsBreedsId,
@@ -41,13 +39,14 @@ function onChooseCatBreed(event) {
   refs.loader.classList.remove('is-hidden');
   refs.textLoader.classList.remove('is-hidden');
 
+  // отримаємо id вибраної породи
   const breedId = event.currentTarget.value;
 
+  // Отримуємо дані та розмітку котів по вибраному id
   fetchCatByBreed(breedId)
     .then(data => {
       refs.loader.classList.add('is-hidden');
       refs.textLoader.classList.add('is-hidden');
-      // console.log(breedId);
       refs.catInfo.innerHTML = createMarkup(data);
     })
     .catch(onError);
@@ -65,3 +64,29 @@ function onError() {
   });
 }
 
+// =============   інший варіант
+
+// // Змінна з пустим масивом куди будуть додаватися всі породи котів
+// let catsBreedsId = [];
+
+// // Отримуємо список котів з сервера
+// fetchBreeds()
+//   .then((data) => {
+//     // console.log(data);
+
+// //  //  проходимо циклом та додаємо до масиву
+//     //   for (let i = 0; i < data.length; i += 1) {
+//     //     const cat = data[i];
+//     //   catsBreedsId.push({ text: cat.name, value: cat.id });
+//     // }
+
+//     data.forEach(cat => {
+//       catsBreedsId.push({ text: cat.name, value: cat.id });
+//     });
+
+//     new SlimSelect({
+//       select: refs.breedSelect,
+//       data: catsBreedsId,
+//     });
+//   })
+//   .catch(onError);

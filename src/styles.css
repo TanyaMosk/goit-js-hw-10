@@ -44,9 +44,10 @@ img {
 }
 
 .loader-text {
-  position: absolute;
-  top: 1%;
-  left: 30%;
+  /* position: absolute;
+  top: 5%;
+  left: 5%; */
+  margin-left: 35px;
   font-weight: 500;
 }
 

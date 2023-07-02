@@ -2,7 +2,6 @@ import { catApi } from './api';
 
 export function fetchBreeds() {
   return catApi.get(`breeds`).then(response => {
-    // console.log(response);
     return response.data;
   });
 }
@@ -14,10 +13,10 @@ export function fetchCatByBreed(breedId) {
       },
     })
     .then(response => {
-      // console.log(response)
       return response.data;
     });
 }
+
 
 // export function fetchBreeds() {
 //   return axios.get(`${BASE_URL}${QUERY_PARAMETERS}`, {
@@ -51,6 +50,9 @@ export function fetchCatByBreed(breedId) {
 //       throw new Error(error.response.status);
 //     });
 // }
+
+
+
 
 // export function fetchBreeds() {
 //   return fetch(`${BASE_URL}${QUERY_PARAMETERS}?api_key=${API_KEY}`).then(
