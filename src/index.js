@@ -17,6 +17,7 @@ refs.breedSelect.addEventListener('change', onChooseCatBreed);
 
 refs.loader.classList.remove('is-hidden');
 refs.textLoader.classList.remove('is-hidden');
+refs.ifError.classList.add('is-hidden');
 
 // Отримуємо список котів з сервера
 fetchBreeds()
@@ -48,12 +49,15 @@ function onChooseCatBreed(event) {
       refs.loader.classList.add('is-hidden');
       refs.textLoader.classList.add('is-hidden');
       refs.catInfo.innerHTML = createMarkup(data);
+      
     })
     .catch(onError);
 }
 
 function onError() {
   refs.loader.classList.remove('is-hidden');
+  refs.breedSelect.classList.add('is-hidden');  
+  refs.textLoader.classList.add('is-hidden');
 
   Notiflix.Notify.failure(refs.ifError.textContent, {
     position: 'center-top',
