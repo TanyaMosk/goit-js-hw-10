@@ -3,7 +3,7 @@ import { fetchBreeds, fetchCatByBreed } from './cat-api';
 import { createMarkup } from './markupServise';
 import Notiflix from 'notiflix';
 import SlimSelect from 'slim-select';
-import 'slim-select/dist/slimselect.css';
+// import 'slim-select/dist/slimselect.css';
 
 const refs = {
   breedSelect: document.querySelector('.breed-select'),
@@ -21,7 +21,7 @@ refs.ifError.classList.add('is-hidden');
 
 // Отримуємо список котів з сервера
 fetchBreeds()
-  .then(data => {    
+  .then(data => {
     // створюємо новий масив зі всіма породами котів по id
     const catsBreedsId = data.map(breed => ({
       text: breed.name,
@@ -49,14 +49,13 @@ function onChooseCatBreed(event) {
       refs.loader.classList.add('is-hidden');
       refs.textLoader.classList.add('is-hidden');
       refs.catInfo.innerHTML = createMarkup(data);
-      
     })
     .catch(onError);
 }
 
 function onError() {
   refs.loader.classList.remove('is-hidden');
-  refs.breedSelect.classList.add('is-hidden');  
+  refs.breedSelect.classList.add('is-hidden');
   refs.textLoader.classList.add('is-hidden');
 
   Notiflix.Notify.failure(refs.ifError.textContent, {
